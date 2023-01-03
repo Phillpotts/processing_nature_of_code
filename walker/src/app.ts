@@ -1,11 +1,15 @@
 import P5 from "p5";
 
+import { Walker } from './walker';
+
 type WindowSize = {
 	height: number,
 	width: number;
 };
 
-document.title = "Example";
+document.title = "Walker";
+
+let w: Walker;
 
 function getWindowSize(): WindowSize {
 	const canvasDiv = document.getElementById('app');
@@ -19,6 +23,7 @@ function setCanvasFullSize(p5: P5) {
 	const width = canvasDiv.clientWidth;
 	const height = canvasDiv.clientHeight;
 	p5.resizeCanvas(width, height);
+	p5.background(255);
 }
 
 // Creating the sketch itself
@@ -35,26 +40,17 @@ const sketch = (p5: P5) => {
 		const canvas = p5.createCanvas(100, 100);
 		canvas.parent("app");
 
-		// Configuring the canvas
-		p5.background("white");
-
 		// Set canvas size
 		setCanvasFullSize(p5);
+
+		// Create walker object
+		w = new Walker(p5);
 	};
 
 	// The sketch draw method
 	p5.draw = () => {
-
-		p5.background(200);
-
-		if (p5.mouseIsPressed) {
-			p5.fill(0);
-		} else {
-			p5.fill(255);
-		}
-
-		p5.ellipse(p5.mouseX, p5.mouseY, 80, 80);
-
+		w.step();
+		w.display();
 	};
 };
 
