@@ -1,0 +1,19 @@
+{
+  "name": "empty_example_typescript",
+  "version": "0.0.0",
+  "description": "A Simple Processing Typescript template application.",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "keywords": ["processing", "typescript"],
+  "author": "william phillpotts",
+  "license": "GNU GENERAL PUBLIC LICENSE",
+  "dependencies": {
+    "@types/p5": "^1.4.3",
+    "p5": "^1.5.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.2"
+  }
+}
